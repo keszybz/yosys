@@ -340,6 +340,11 @@ bool is_absolute_path(std::string filename);
 void remove_directory(std::string dirname);
 bool create_directory(const std::string& dirname);
 std::string escape_filename_spaces(const std::string& filename);
+#ifdef _WIN32
+const char* const OS_PATH_SEP = "/\\";
+#else
+const char* const OS_PATH_SEP = "/";
+#endif
 
 template<typename T> int GetSize(const T &obj) { return obj.size(); }
 inline int GetSize(RTLIL::Wire *wire);

@@ -639,12 +639,7 @@ std::string escape_cxx_string(const std::string &input)
 
 std::string basename(const std::string &filepath)
 {
-#ifdef _WIN32
-	const std::string dir_seps = "\\/";
-#else
-	const std::string dir_seps = "/";
-#endif
-	size_t sep_pos = filepath.find_last_of(dir_seps);
+	size_t sep_pos = filepath.find_last_of(OS_PATH_SEP);
 	if (sep_pos != std::string::npos)
 		return filepath.substr(sep_pos + 1);
 	else
