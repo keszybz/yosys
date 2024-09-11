@@ -892,7 +892,7 @@ frontend_verilog_preproc(std::istream                 &f,
 				// if the include file was not found, it is not given with an absolute path, and the
 				// currently read file is given with a path, then try again relative to its directory
 				ff.clear();
-				fixed_fn = filename.substr(0, filename.find_last_of(OS_PATH_SEP)+1) + fn;
+				fixed_fn = parent_from_file_path(filename) + fn;
 				ff.open(fixed_fn);
 			}
 			if (ff.fail() && fn.size() > 0 && fn_relative) {

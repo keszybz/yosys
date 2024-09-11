@@ -4382,7 +4382,7 @@ AstNode *AstNode::readmem(bool is_readmemh, std::string mem_filename, AstNode *m
 	std::ifstream f;
 	f.open(mem_filename.c_str());
 	if (f.fail()) {
-		std::string path = filename.substr(0, filename.find_last_of(OS_PATH_SEP)+1);
+		std::string path = parent_from_file_path(filename);
 		f.open(path + mem_filename.c_str());
 		yosys_input_files.insert(path + mem_filename);
 	} else {
